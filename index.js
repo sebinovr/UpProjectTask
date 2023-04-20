@@ -37,7 +37,7 @@ app.use('/api/proyectos', proyectoRoutes);
 app.use('/api/tareas', tareaRoutes);
 
 //Conexion a Puerto
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 10000;
 
 const servidor = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
