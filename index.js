@@ -24,7 +24,7 @@ const corsOptions = {
             callback(null, true);
         } else {
             //NO puede consultar la API
-            callback(new Error("Error de Cors"))
+            callback(new Error("Error de Cors - Desde Index.js"))
         }
     }
 }
@@ -42,6 +42,7 @@ const PORT = process.env.PORT || 4000;
 const servidor = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
+
 
 //SOCKET.IO
 import { Server } from "socket.io";
