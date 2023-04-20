@@ -10,23 +10,29 @@ const app = express();
 app.use(express.json()); //habilita la opcion de enviar en formato Json
 
 //Extraer variable de entorno
-dotenv.config()
+dotenv.config(); //comentario
 
 //conectar BD
 conectarDB();
 
 //Configurar Cors - POSTERIOR A USO DE POSTMAN
 const whitelist = [process.env.FRONTEND_URL]; //Habilita localhost desde FrontEnd
+// const corsOptions = {
+//     origin: function(origin, callback){
+//         if(whitelist.includes(origin)){
+//             //Puede consultar la API
+//             callback(null, true);
+//         } else {
+//             //NO puede consultar la API
+//             callback(new Error("Error de Cors - Desde Index.js"))
+//         }
+//     }
+// }
+
 const corsOptions = {
-    origin: function(origin, callback){
-        if(whitelist.includes(origin)){
-            //Puede consultar la API
-            callback(null, true);
-        } else {
-            //NO puede consultar la API
-            callback(new Error("Error de Cors - Desde Index.js"))
-        }
-    }
+    origin: whitelist,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    optionSuccessStatus: 200
 }
 
 app.use(cors(corsOptions));
